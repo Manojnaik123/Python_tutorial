@@ -1,7 +1,2 @@
-
-x = 100
-def func():
-    global x
-    x = 50
-func()
-print(x)
+x = ['a', 'b', 'c','d']
+print(x[-3: -1 ])
