@@ -1541,3 +1541,288 @@ obj1 = {
 from mymodule import function_add  # This will only import function_add
 
 print(function_add())
+
+# Datetime
+import datetime
+x = datetime.datetime.now()
+
+print(x.year)
+print(x.time())
+print(x.date())
+print(x.day)
+
+# Python math
+x= min(3,2,1)
+y= max(3,2,1)
+
+print(x)
+print(y)
+
+z= abs(-7.25)
+
+print(pow(2,3)) # this will return the value of x to the power y
+
+# The math module
+import math
+
+print(math.sqrt(3))
+print(math.ceil(2.4))
+print(math.floor(2.4))
+print(math.pi)
+
+# Python json
+import json
+
+# Converting json into python
+x= '{"name":"manoj"}'
+
+y = json.loads(x)
+
+z= json.dumps(y)
+
+print(type(y)) # prints dict
+print(type(z)) # prints string
+
+# Regular expression
+import re
+
+#Check if the string starts with "The" and ends with "Spain":
+
+txt = "The rain in Spain"
+x = re.search('rain', txt)
+print(x.start()) # 4
+print(x.end())# 8
+
+o = re.sub('h', 'x', txt)
+print(o) # Txe rain in Spain
+
+t = re.split('\s', txt)
+print(t) # ['The', 'rain', 'in', 'Spain']
+
+print(x.span()) # (4, 8) the tuple of the start and end point if the serching text
+print(x.string) # returns the passed string into the function
+print(x.group()) # Prints the part of the string where there is a match
+
+print(re.findall('a', txt)) # returns the list of all the matches ['a', 'a']
+
+#PIP
+# First install the package using pip install camelcase
+
+import camelcase
+
+c= camelcase.CamelCase()
+
+txt ="hello world"
+
+print(c.hump(txt))
+
+# remove package
+# pip uninstall camelcase
+
+# Listing all installed packages - pip list
+
+# Try Except
+'''
+The try block lets you test a block of code for errors.
+
+The except block lets you handle the error.
+
+The else block lets you execute code when there is no error.
+
+The finally block lets you execute code, regardless of the result of the try- and except blocks.
+'''
+
+try:
+    print(x)
+except:
+    print('error occured')
+else:
+    print('no error')
+finally:
+    print('this runs anyways')
+
+# Multiple excemptions
+try:
+    print(x)
+except NameError:
+    print('error occured')
+except:
+    print('error occured')
+finally:
+    print('this runs anyways')
+
+# raising an exception
+x = -1
+if x < 0:
+    raise Exception('no numbers below zero')
+
+# String formating
+
+s = 'This is a string' # normal string
+
+f = f'{'manoj'} is a genious. He is {21} years old'
+
+print(f)
+
+# String format
+
+price = 49
+tat = 'the price of the product is {}'
+print(tat.format(price))
+
+# operations in the string format
+a = b =2
+d= f' the addition of a and b is {a+b}'
+
+print(d)
+
+# if else in the string format
+r = f' {"manoj" if True else "kunjal"}'
+
+print(r)
+
+# executing function ins the string format
+y = f'{"RangeRover".upper()}'
+
+print(y)
+
+# multiple values
+
+x = 'manoj'
+y = 'naik'
+
+rt = 'firstname: {}, lastname:{}'
+print(rt.format(x,y))
+
+# index number
+# You can use index numbers
+# (a number inside the curly brackets {0}) to be sure the values are placed in the correct placeholders:
+
+x1 = 'manoj'
+y1 = 'naik'
+
+rt = 'firstname: {1}, lastname:{0}'
+print(rt.format(y1,x1)) # prints - firstname: manoj, lastname:naik
+
+# Named index
+xa = 'manoj'
+yb = 'naik'
+
+rt = 'firstname: {a}, lastname:{b}'
+print(rt.format(a= xa, b = yb)) # prints - firstname: manoj, lastname:naik
+
+# Printing decimal
+
+pr = 45
+tt = f'the price is {pr:.2f}'
+print(tt) # - the price is 45.00
+
+rate = 500000
+print(f'price is {rate:,}') # - price is 500,000
+
+# Python user input
+print('enter name')
+name = input()
+
+# using prompt with in the input
+name = input('enter name')
+
+# getting numerical input
+num = int(input('enter num'))
+
+print(type(num))
+
+# validating a number
+x = True
+
+while x:
+    y = input('enter a number')
+    try:
+        d = int(y)
+        x = False
+    except:
+        print('wrong input')
+
+print('we got the number')
+
+#____________________________________________________________________________
+#____________________________________________________________________________
+#____________________________________________________________________________
+
+# File handling
+'''
+File handling
+the key function in this is open() - This function takes two parameter that is filename and mode
+There are four diff modes for opening a file they are
+
+"r" - Read - Default value. Opens a file for reading, error if the file does not exist
+"a" - Append - Opens a file for appending, creates the file if it does not exist
+"w" - Write - Opens a file for writing, creates the file if it does not exist
+"x" - Create - Creates the specified file, returns an error if the file exists
+
+In addition we can also specify
+'t' - text - default value - text mode
+'b' - binary - binary mode (eg images)
+'''
+
+# to open a file
+f = open('demo.txt', 'rt') # r means read and t means text
+
+# Python file open
+
+f1 = open('demo.txt') # by default read and default text
+# if file located in other location we can specify the location
+
+# r = open(r'C:\Users\Admin\Downloads\rat.txt') # this way
+
+# Using with statement
+with open('demo.txt') as x: # by default read
+    print(x.read())
+
+# read only parts of the file
+with open('demo.txt') as x: # by default read
+    print(x.read(2)) # prints first 2 charecters
+
+# Reading one line of the file using readline()
+with open('demo.txt') as x: # by default read
+    print(x.readline())
+
+# Reading two line of the file using readline()
+with open('demo.txt') as x:  # by default read
+    print(x.readline())
+    print(x.readline())
+
+# looping through the lines
+with open('demo.txt') as f:
+    for x in f:
+        print(x)
+
+# python write and create
+# creating a new file
+
+d = open('new_file.txt', 'x')
+
+
+# writing on the existing file
+with open('demo.txt', 'a') as rt:  # 'a' appends the file
+    rt.write('this is the last line')
+    print(rt.read())
+
+# Overriding the existing file
+with open('demo.txt', 'w') as rt:  # 'w' overrides the file
+    rt.write('this is the last line')
+    print(rt.read())
+
+# deleting the files
+import os
+os.remove('file_to_be_removed.txt')
+
+# checking if file exist
+
+if os.path.exists('file_to_be_removed.txt'):
+    os.remove('file_to_be_removed.txt')
+else:
+    print('file does not exist')
+
+# deleting the folder
+os.rmdir('folder_to_be_removed')
