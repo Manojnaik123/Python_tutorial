@@ -792,3 +792,752 @@ s3 = s1.symmetric_difference(s2)
 s4 = s1 ^ s2
 s1.symmetric_difference_update(s2) # instead of creating new set it updates the s1
 
+'''
+Python dictionaries
+'''
+
+# Creating and printing dictionaries
+# dictionaries are changable that means we can add or remove key value pairs
+
+t = {
+    'name' : 'manoj',
+    'age' : 24
+}
+
+print(t)
+print(t['name']) # This way we can refer values using the key
+
+# Duplicates are not allowed in the dict
+# Duplicate values will overwrite the existing value
+
+t = {
+    'name' : 'manoj',
+    'name' : 'naik'
+}
+
+print(t)
+"""
+/ this will print {'name': 'naik'}
+"""
+
+# Dict length can be known using the len function
+
+print(len(t))
+
+# Dict - The valus can be of any datatype
+
+t ={
+    'name' : 'manoj',
+    'age' : 24
+}
+
+# Dict constructor
+thisdict = dict(name = 'manoj', age = 24)
+print(thisdict)
+
+# Accessing the items in dict
+
+t = {
+    'brand' : 'ford',
+    'model' : 'mustang'
+}
+
+x = t['brand']
+
+# There is also a method called get() which does same as the above
+
+x= t.get('model')
+
+# There is also a method called as keys that will return all the keys of the dict
+
+x = t.keys() # the list of the keys this return is the view of the dict any changes int eh dict will reflect in this list
+
+# The items() function will return all teh elements of the dict as the tuple
+
+x = t.items()
+print(x) # prints dict_items([('brand', 'ford'), ('model', 'mustang')])
+
+# Check is keys exist
+
+if 'name' in t:
+    print(True)
+
+# Change the items of the dict
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+thisdict["year"] = 2018 # Changes the year to 2018
+
+thisdict.update({"year": 2018}) # Changes the year to 2018
+
+# Adding items to the dict
+thisdict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+thisdict['color'] = 'red'
+
+# Using update also we can do the same
+
+thisdict.update({'color': 'red'})
+
+# Remove items
+
+thisdict.pop('color')
+thisdict.popitem() # this removes the last inserted key value pair
+del thisdict['color'] # this removes the single key value pair
+del thisdict # deleted the entire dict
+
+thisdict.clear() # empties the dict
+
+for x in thisdict:
+    print(x) # This prints the key one by one
+
+for x in thisdict:
+    print(thisdict[x]) # This prints the key one by one
+
+# we can also print vales using values() amnd for loop
+
+for x in thisdict.values():
+    print(x)
+
+# similar to the keys
+for x in thisdict.keys():
+    print(x)
+
+# loop through both key and value using the items()
+for x,y in thislist.items():
+    print(x,y)
+
+# Copy a dict
+# Make a copy using the copy()
+
+t = {
+    'name' : 'manoj',
+    'age' : 24
+}
+
+b = t.copy()
+print(b)
+
+# Make a copy using the dict()
+t = {
+    'name' : 'manoj',
+    'age' : 24
+}
+
+b = t.dict()
+print(b)
+
+# nested dictionaries
+# A dict can have dict in itself called nested dict
+
+myfamily = {
+    'member1' : {
+        'name' : 'manoj',
+        'age' : 25
+    },
+    'member2' : {
+        'name' : 'prema',
+        'age' : 50
+    }
+}
+
+# using three dict to create new dict
+child1 = {
+  "name" : "Emil",
+  "year" : 2004
+}
+child2 = {
+  "name" : "Tobias",
+  "year" : 2007
+}
+child3 = {
+  "name" : "Linus",
+  "year" : 2011
+}
+
+myfamily = {
+  "child1" : child1,
+  "child2" : child2,
+  "child3" : child3
+}
+
+# Accessing items from the nested dict
+
+print(myfamily['child1']['name'])
+
+# Looping through the nested dict
+
+for x, obj in myfamily.items():
+    print(x)
+    for a in obj:
+        print(a+ ':' , obj[a])
+
+# If else statement
+'''
+Python supports the usual logical conditions from mathematics:
+    Equals: a == b
+    Not Equals: a != b
+    Less than: a < b
+    Less than or equal to: a <= b
+    Greater than: a > b
+    Greater than or equal to: a >= b
+'''
+
+# Syntax
+a = 33
+b = 200
+if b> a:
+    print("b is greater than a")
+elif a > b:
+    print("a is greater than b")
+else:
+    print("a is equal to b")
+
+# there is also the nested if statement that i know
+
+# Short hand if
+if a>b: print("a is greater than b")
+
+# Short hand if else
+print("A") if a> b else print('B')
+
+# similarly we can use and or and not in the if statement
+
+if(a>b & a== b):
+    print("True")
+
+# pass Keyword - it is used to pass the if statement if we do not intend to do anything
+
+if a>b:
+    pass # if we leave this without anything this will show error
+
+
+# Python match - The match statement is used to perform different actions based on different conditions.
+# This is similar to the swithch
+
+# Syntax
+day = 4
+match day:
+    case 1:
+        print('1')
+    case 2:
+        print('2')
+    case 3 | 4 |5:
+        print('3,4,5')
+    case _:
+        print('no match') # this is the default cace
+
+# there is also 'If Statements as Guards'
+# do think is much important
+
+# While loops
+i = 0
+while i < 5:
+    print(i)
+    i+=1
+
+# The break statement
+# Exit the loop when i is 3:
+
+i = 1
+while i< 6:
+    print(i)
+    if i == 3:
+        break
+    i+=1
+
+# the continue statement
+#With this we can stop the current iteration
+
+i=0
+while i < 6:
+    i += 1
+    if(i == 2):
+        continue
+    print(i)
+
+# the else statement
+
+i=0
+
+while i < 6:
+    print(i)
+    i += 1
+else:
+    print('i is no longer than 6')
+
+# For loops
+# The for loop cannot be empty instead we can use pass
+for x in [0, 1, 2]:
+  pass
+
+# Looping through strings
+
+for x in 'bannana':
+    print(x)
+
+# Using the break statement
+
+for x in 'bannana':
+    print(x)
+    if x == 'a':
+        break
+
+# This prints 'ba'
+
+# The continue statement
+for x in 'bannana':
+    if x == 'n':
+        continue
+    print(x)
+
+# The range function
+for x in range(6):
+    print(x)
+
+for x in range(2,6): # range start from 2 to 6, but does not include 6
+    print(x)
+
+for x in range(3, 15, 2): # starts with 3 to 15 doesnot include 15 and the third paramenter is increment value
+    print(x)
+
+# prints 3 5 7 9 11 13
+
+# Else in for loop
+
+for x in range(5):
+    print(x)
+else:
+    print(' Range over ')
+
+# In case of continue the else part will run
+for x in range(5):
+    if x == 3:
+        continue
+    print(x)
+else:
+    print(' Range over ')
+
+# In case of break the else part wont run
+for x in range(5):
+    if x == 3:
+        break
+    print(x)
+else:
+    print(' Range over ')
+
+
+# Nested for loops
+adj = ["red", "big", "tasty"]
+fruits = ["apple", "banana", "cherry"]
+
+for x in adj:
+    for y in fruits:
+        print(x,y)
+
+# Python functions
+# To create a function in the python we use def keyword
+# Syntax
+def function_name():
+    print('hello world')
+
+
+# Functions with arguments
+
+def function_one(name): # Similarly we can set multiple arguments
+    print(name + " helo ")
+
+# Using arbitary arguments , *args
+
+def function_one(age, *name):
+    print(name[0])
+    print(name[1])
+    print(age)
+
+function_one(24, 'manoj', 'naik')
+
+# Keyword argument
+
+def function_one(age, name):
+    print(name)
+    print(age)
+
+function_one( name = 'manoj', age = 24)
+
+# aribitary keywords **kwargs
+
+def function1(**arr):
+    print(arr['name'])
+    print(arr['age'])
+
+function1(age = 21, name = 'manoj naik')
+
+# default parameter value
+
+def addition(a = 1, b=1):
+    print(a + b)
+
+addition() # there are no parameters so the function takes the default value
+
+# passing a list as an argument in pythons function
+
+a = [1,2,3,4,5]
+def func(b):
+    for x in b:
+        print(x)
+func(a)
+
+# Returning values in function
+
+def func(x):
+    return x
+
+i = func(1)
+
+print(i)
+
+# pass keyword - Function definitions cannot be empty,
+# but if you for some reason have a function definition with no content,
+# put in the pass statement to avoid getting an error.
+
+def myfunction():
+  pass
+
+# Positional-Only Arguments - Function with arguments can also accept keyword and positional arguments.
+# To disable this action we can use / in the argument as the below example.
+
+def func(x, /):
+    print(x)
+
+func(3) # this will print 3
+func(x = 3) # this will throw error
+
+# Keyword only arguments - Function with arguments can also accept keyword and positional arguments.
+
+def func(*, x):
+    print(x)
+
+func(3) # this will throw error
+func(x= 3) # this will not throw error
+
+# Combining positional and keyword only arguments
+
+def func(a,b,/,*, c,d):
+    print(a,b,c,d)
+func(1,2,c=3, d=4)
+
+# Recursion
+
+def tri_recursion(k):
+  if(k > 0):
+    result = k + tri_recursion(k - 1)
+    print(result)
+  else:
+    result = 0
+  return result
+
+print("Recursion Example Results:")
+tri_recursion(6)
+
+# Lambda - is a small and anonyms function
+
+x = lambda x: x+10
+print(x(5))
+
+
+# Multiple arguments
+
+x= lambda a,b: a+b
+print(x(1,2))
+
+# here is one of the reason to use the lambda function
+
+def func(a):
+    return lambda x: x*a
+
+number_doubler = func(2)
+print(number_doubler(10)) # Here 10 is doubled
+
+number_tripler = func(3)
+print(number_tripler(10)) # Here 10 is tripled
+
+# Python array
+# This Shows how to use list as array in python
+
+# Creatign an array
+arr = ['volvo', 'benz', 'honda']
+
+# Accessing element from the array
+print(arr[0]) # print first element
+
+# Modifying the element in the array
+arr[1] = 'mercedes'
+
+# Prints the length of the array
+print(len(arr))
+
+# adding element in the array
+arr.append('toyota')
+
+# removing the element from teh array
+arr.pop()  # removes the last element
+
+arr.pop(0) # removes element from the index
+
+arr.remove('honda')
+
+# Looping through the array is same as the list using for loop and for loop using range
+
+# OOPS
+class NewClass:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __str__(self):
+        return f'{self.name} : {self.age}'
+
+    def func(self, a,b):
+        return f"{self.name}'s age is grater than {a+b}"
+
+
+
+obj1 = NewClass('manoj', 24)
+
+
+# Modifying objects properties
+obj1.name = 'kunjal'
+
+# Deleting the object's property
+del obj1.name
+
+print(obj1.func(1, 2))
+
+# The pass statement
+# Class definition cannot be empty so we can use pass instead
+class Person:
+  pass
+
+# Inheritance
+'''
+Inheritance allows us to define a class that inherits all the methods and properties from another class.
+
+Parent class is the class being inherited from, also called base class.
+
+Child class is the class that inherits from another class, also called derived class.
+'''
+
+# Creating a parent class - Any class can be a parent class, so the
+# syntax to create the parent class is same as the normal class
+
+# Creating the child class
+
+class Human:
+    def __init__(this, name, age):
+        this.name = name
+        this.age = age
+
+    def print_details(this):
+        return f'{this.name}\n {this.age}'
+
+class Student(Human):
+    def __init__(this, name, age, roll_no):
+        Human.__init__(this, name, age)
+        this.roll_no = roll_no
+
+    def __str__(this):
+        return f'{this.name},{this.age},{this.roll_no}'
+
+obj = Student('John', 22, 32)
+
+print(obj)
+
+class Human:
+    def __init__(this, name, age):
+        this.name = name
+        this.age = age
+
+    def print_details(this):
+        return f'{this.name}\n {this.age}'
+
+class Student(Human):   # For inheritance in child class refer the parent
+    def __init__(this, name, age, roll_no): # in this func add the new property
+        Human.__init__(this, name, age) # and refer parent __init__ function, We cal also call Super().__init__(this, name, age)
+        this.roll_no = roll_no # then assign the property
+
+    def __str__(this):
+        return f'{this.name},{this.age},{this.roll_no}'
+
+obj = Student('John', 22, 32)
+
+print(obj)
+
+# Iteration - Got through the meaning - more clarity needed
+
+#Polymorphism
+# The word "polymorphism" means "many forms",
+# and in programming it refers to methods/functions/operators with the same name that can be executed on many objects or classes.
+
+# len() is an example of the polymorphism because it can be used on lit,  tuple, string, and dict
+
+# This is another example of polymorphism
+class Car:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def move(self):
+        print('run')
+
+
+class Boat:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def move(self):
+        print('sail')
+
+
+class AirCraft:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def move(self):
+        print('fly')
+
+car = Car('toyota')
+boat = Boat('lamb')
+aircraft = AirCraft('gulf')
+
+for x in (car, boat, aircraft):
+    x.move()
+
+
+# Inheritance class polymorphism
+class Vehicle:
+    def __init__(self, brand):
+        self.brand = brand
+
+    def move(self):
+        print('run')
+
+class Car(Vehicle):
+    pass
+
+class Boat(Vehicle):
+    def move(self):
+        print('sail')
+
+
+car = Car('bmw')
+boat = Boat('lamb')
+
+for x in (car, boat):
+    x.move()
+
+# Pyhton scope
+# Local scope - A variable created inside the function is availabe inside the function
+# Function inside function
+
+def func1():
+    x = 5
+    def func2():
+        print(x)
+    func2()
+
+func1()
+
+
+# This will print global x
+x = 10
+def func1():
+    x = 5
+    def func2():
+        global x
+        print(x)
+    func2()
+
+func1()
+
+# This will print previous function x
+x = 10
+def func1():
+    x = 5
+    def func2():
+        print(x) # prints 5
+    func2()
+
+func1()
+
+# nonlocal - its usage will refer to the variabel of the outer function
+
+# Example
+def func1():
+    x = 5
+    def func2():
+        x = 33  # this creates a new variable and dosent refers to the outer func variable
+        print(x) # prints 33
+    func2()
+    print(x) # prints 5
+func1()
+
+def func1():
+    x = 5
+    def func2():
+        nonlocal x
+        x = 33
+        print(x) # prints 33
+    func2()
+    print(x) # prints 33
+func1()
+
+# What is a module?
+# A module can be considered same as a code library
+# Naming a module - we can name anything we want but it should end with .py
+
+# This is how we import from module
+# mymodule.py
+def greeting():
+    print('Hello')
+
+object1 = {
+    'name': 'John',
+}
+
+# mail.py
+import mymodule
+
+mymodule.greeting() # importing function
+
+print(mymodule.object1['name']) # importing variables
+
+# using the dir() - it will list all the methods and variables in the imported module
+import mymodule
+
+print(dir(mymodule))
+
+# renaming the module
+import mymodule as x
+
+print(x.object1)
+
+# We can choose import only part using the from keyword
+#mymodule.py
+def function_add():
+    print('hello')
+
+obj1 = {
+    'name' : 'manoj',
+    'age' : 22,
+}
+
+#newmodule.py
+from mymodule import function_add  # This will only import function_add
+
+print(function_add())
