@@ -1826,3 +1826,174 @@ else:
 
 # deleting the folder
 os.rmdir('folder_to_be_removed')
+
+# Duck typing
+# Duck typing is a concept in Python (and other dynamically typed languages)
+# where the type or class of an object is less important than the methods or behavior it supports.
+
+class Duck:
+    def sound(self):
+        print("Quack!")
+
+class Dog:
+    def sound(self):
+        print("Woof!")
+
+def make_sound(animal):
+    animal.sound()
+
+# Both work, even though one is Duck and other is Dog
+make_sound(Duck())  # Quack!
+make_sound(Dog())   # Woof!
+
+# Here, make_sound() function doesn’t care if the object is a Duck or Dog.
+# As long as the object has a .sound() method, it works fine.
+
+# Multi dimentional array
+a = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+
+print(a[0])
+print(a[0][1])
+
+for x in a:
+    for y in x:
+        print(y, end='')
+    print()
+
+# Decorators
+# It modifies the behavious of a function without chaging its actual code
+
+def dec_func(fun):
+    def wrapper():
+        print('before')
+        fun()
+        print('after')
+    return wrapper
+
+@dec_func
+def func():
+    print('hello')
+
+func()
+
+# Operator overloading
+# Intiger and string knnows what to do with the +, but the object doest know what to do with it.
+# When we specify what object should do with the + that is called operator overloading
+
+a = 1
+b = 2
+print(a+b) # prints 3
+print(int.__add__(a,b)) # prints 3, __add__ is the function that int class will call for the addition
+
+# In case of the object, it dosent know what to perform witn +
+# Here we will spcify what the + does in object
+
+class Student:
+    def __init__(self, m1, m2):
+        self.m1 = m1
+        self.m2 = m2
+
+    def __add__(self, other): # it takes two parameters
+        ma = self.m1 + other.m1
+        mb = self.m2 + other.m2
+        return Student(ma, mb)
+
+    def __gt__(self, other):
+        ma = self.m1 + self.m2
+        mb = other.m1 + other.m2
+        if(ma > mb):
+            return Student(self.m1, self.m2)
+        else:
+            return Student(other.m1, other.m2)
+
+s1 = Student(21, 23)
+s2 = Student(11, 13)
+
+s3 = s1 + s2
+s4 = s1 > s2
+
+print(s3.m1, s3.m2)
+
+# Method overloading - Means multiple methods with same name but different paramenters
+# #Python dosent this featurer directly - so we need to impliment accordingly
+class Example:
+    def show(self, x=None, y=None):
+        if x is not None and y is not None:
+            print("Two arguments:", x, y)
+        elif x is not None:
+            print("One argument:", x)
+        else:
+            print("No arguments")
+
+obj = Example()
+obj.show()
+obj.show(10)
+obj.show(10, 20)
+
+# Python dosent has pointer like c++ or c
+
+# Abstract class - it is a blueprint class that other sub class needs to implement
+# All the abstract methods within the abstract class should be in the sub class
+
+# Exampele
+from abc import ABC, abstractmethod
+
+class Animal(ABC):
+    @abstractmethod
+    def sound(self):
+        pass
+
+    @abstractmethod
+    def legs(self):
+        pass
+
+class Dog(Animal):
+    def sound(self):
+        print('woof woof')
+
+    def legs(self):
+        print(4)
+
+d = Dog()
+d.sound()
+
+# Abstract method - it is the method in the base class that is declared but not defined
+# in python we use @abstractmethod to define them, as we saw in the above example
+
+#iterators
+# it has a special function iter and next using this they access elements one by one
+a = [1,2,3]
+
+b = iter(a)
+
+print(next(b))
+print(next(b))
+print(next(b))
+
+# Generators
+# These are special type that produces values on the fly
+def gen():
+    yield 5
+    yield 1
+    yield 1
+    yield 1
+
+values = gen()
+print(next(values))
+print(next(values))
+print(next(values))
+
+# generator loop
+def gen_fun(n):
+    for x in range(1, n+1):
+        yield x
+
+a = gen_fun(10)
+print(next(a))
+print(next(a))
+print(next(a))
+print(next(a))
